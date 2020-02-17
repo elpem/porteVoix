@@ -1,0 +1,34 @@
+<h1>add post</h1>
+
+<%= form_for :post, url: posts_path do |f| %>
+	<% if @post.errors.any? %>
+		<% @post.errors.full_messages.each do |msg| %>
+			<div class="alert alert-danger"><%= msg %></div>
+		<% end %>
+	<% end %>
+	<p>
+		<%= f.label :from %><br>
+		<%= f.text_field :from %>
+	</p>
+
+	<p>
+		<%= f.label :to %><br>
+		<%= f.text_field :to %>
+	</p>
+
+	<p>
+		<%= f.label :message %><br>
+		<%= f.text_area :body %>
+	</p>
+
+	<p>
+		<%= f.radio_button(:conf, true) %>
+		<%= f.label(:private, "private") %>
+		<%= f.radio_button(:conf, false) %>
+		<%= f.label(:public, "public") %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
